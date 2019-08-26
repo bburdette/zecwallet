@@ -127,11 +127,6 @@ QMAKE_INFO_PLIST = res/Info.plist
 win32: RC_ICONS = res/icon.ico
 ICON = res/logo.icns
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/res/ -llibsodium
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/res/ -llibsodiumd
 else:unix: LIBS += -L$$PWD/res/ -lsodium
