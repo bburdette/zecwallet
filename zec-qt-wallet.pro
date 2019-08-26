@@ -127,12 +127,6 @@ QMAKE_INFO_PLIST = res/Info.plist
 win32: RC_ICONS = res/icon.ico
 ICON = res/logo.icns
 
-libsodium.target = $$PWD/res/libsodium.a
-libsodium.commands = res/libsodium/buildlibsodium.sh
-
-QMAKE_EXTRA_TARGETS += libsodium
-QMAKE_CLEAN += res/libsodium.a
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
@@ -145,8 +139,3 @@ else:unix: LIBS += -L$$PWD/res/ -lsodium
 INCLUDEPATH += $$PWD/res
 DEPENDPATH += $$PWD/res
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/res/liblibsodium.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/res/liblibsodium.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/res/libsodium.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/res/libsodiumd.lib
-else:unix: PRE_TARGETDEPS += $$PWD/res/libsodium.a
